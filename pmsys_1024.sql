@@ -11,8 +11,8 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- Dumping database structure for pmsys_1015
-CREATE DATABASE IF NOT EXISTS `pmsys_1015` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `pmsys_1015`;
+CREATE DATABASE IF NOT EXISTS `pmsys_1024` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `pmsys_1024`;
 
 
 -- Dumping structure for table pmsys_1015.projects
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `projects` (
 /*!40000 ALTER TABLE `projects` DISABLE KEYS */;
 INSERT INTO `projects` (`id`, `name`, `description`, `start_date`, `end_date`, `percentage_complete`, `status_id`, `user_id`, `value`) VALUES
 	(1, 'PM Systems 1', 'This is a Project Management Software created by Emooth Pty Ltd', '2013-08-11 04:00:00', '2013-08-23 06:35:00', 50, 2, 5, 15),
-	(5, 'Jackie project ', 'Jackie project add test 1\r\nJackie project add test 1\r\nJackie project add test 1\r\nJackie project add test 1', '1970-01-01 01:00:00', '1970-01-01 01:00:00', 0, 1, 5, 5),
+	(5, 'Jackie project ', 'Jackie project add test 1\r\nJackie project add test 1\r\nJackie project add test 1\r\nJackie project add test 1', '1970-01-01 01:00:00', '1970-01-01 01:00:00', 0, 1, 5, 50),
 	(6, 'test 3333vf', 'test 3test 3test 3test 3test 3test 3', '2013-09-23 00:00:00', '2013-10-24 00:00:00', 20, 1, 5, 10),
 	(7, 'test 4ee', 'test 4test 4test 4test 4test 4test 4test 4test 4test 4test 4test 4test 4test 4', '2013-10-21 00:00:00', '2013-09-30 00:00:00', 5, 1, 5, 20),
 	(8, 'test 5', 'test 5test 5test 5test 5test 5test 5test 5', '2013-08-13 00:00:00', '2013-09-03 00:00:00', 6, 1, 7, 25),
@@ -45,7 +45,7 @@ INSERT INTO `projects` (`id`, `name`, `description`, `start_date`, `end_date`, `
 	(14, 'test 11', 'test 11test 11test 11test 11test 11test 11test 11test 11test 11test 11test 11', '2013-10-10 00:00:00', '2013-10-11 00:00:00', 5, 1, 7, 60),
 	(15, 'test 12', 'test 12test 12test 12test 12test 12test 12test 12test 12test 12test 12test 12test 12test 12', '2013-10-10 00:00:00', '2013-10-11 00:00:00', 10, 1, 6, 40),
 	(16, 'test 13', 'test 13test 13test 13test 13test 13test 13test 13test 13test 13test 13test 13test 13test 13', '2013-10-10 00:00:00', '2013-10-11 00:00:00', 5, 2, 6, 20),
-	(17, 'test 14', 'test 14test 14test 14test 14test 14test 14test 14test 14test 14test 14', '2013-10-10 00:00:00', '2013-10-11 00:00:00', 5, 1, 6, 10);
+	(17, 'test 14', 'test 14test 14test 14test 14test 14test 14test 14test 14test 14test 14', '2013-10-10 00:00:00', '2013-10-11 00:00:00', 15, 1, 6, 20);
 /*!40000 ALTER TABLE `projects` ENABLE KEYS */;
 
 
@@ -106,9 +106,9 @@ CREATE TABLE IF NOT EXISTS `tickets` (
   `replied` tinyint(1) NOT NULL DEFAULT '0',
   `project_id` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=gb2312 COLLATE=gb2312_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=gb2312 COLLATE=gb2312_bin;
 
--- Dumping data for table pmsys_1015.tickets: ~14 rows (approximately)
+-- Dumping data for table pmsys_1015.tickets: ~16 rows (approximately)
 /*!40000 ALTER TABLE `tickets` DISABLE KEYS */;
 INSERT INTO `tickets` (`id`, `ticket_date`, `message`, `user_id`, `ip_address`, `ticket_status`, `replied`, `project_id`) VALUES
 	(3, '2013-10-17 20:32:45', 'Can you add a page to fetch Yellow Page?', 5, '::1', 1, 1, 5),
@@ -124,7 +124,9 @@ INSERT INTO `tickets` (`id`, `ticket_date`, `message`, `user_id`, `ip_address`, 
 	(19, '2013-10-18 23:42:50', 'dfsfdgdgf', 5, '::1', 4, 0, 11),
 	(20, '2013-10-19 15:54:55', 'Post 1019 test1', 5, '::1', 4, 0, 11),
 	(21, '2013-10-19 15:57:52', 'Post 1019 test2', 5, '::1', 4, 0, 11),
-	(22, '2013-10-19 23:34:10', 'Post 1019 night test1', 5, '::1', 4, 0, 11);
+	(22, '2013-10-19 23:34:10', 'Post 1019 night test1', 5, '::1', 4, 0, 11),
+	(23, '2013-10-23 13:48:54', 'Post test 1023', 5, '::1', 4, 0, 11),
+	(24, '2013-10-23 13:59:15', 'Post test 2 1023', 5, '::1', 4, 0, 11);
 /*!40000 ALTER TABLE `tickets` ENABLE KEYS */;
 
 
@@ -135,20 +137,33 @@ CREATE TABLE IF NOT EXISTS `ticket_feedback` (
   `feedback` text COLLATE gb2312_bin NOT NULL,
   `ticket_id` int(11) NOT NULL,
   `ip_address` varchar(128) COLLATE gb2312_bin NOT NULL,
-  `status` int(11) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '1',
   `type` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `parent_id` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=gb2312 COLLATE=gb2312_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=gb2312 COLLATE=gb2312_bin;
 
--- Dumping data for table pmsys_1015.ticket_feedback: ~6 rows (approximately)
+-- Dumping data for table pmsys_1015.ticket_feedback: ~17 rows (approximately)
 /*!40000 ALTER TABLE `ticket_feedback` DISABLE KEYS */;
-INSERT INTO `ticket_feedback` (`id`, `feedback_date`, `feedback`, `ticket_id`, `ip_address`, `status`, `type`) VALUES
-	(1, '2013-08-20 16:52:04', 'Do you have any sample?\r\nDo you have any sample?', 1, '::1', 1, 2),
-	(2, '2013-08-23 15:51:23', 'Not yet 哈哈哈', 1, '::1', 1, 1),
-	(3, '2013-08-20 16:52:13', 'gfdsadfgdagffdsaf', 2, '::1', 0, 2),
-	(5, '2013-10-02 10:51:32', 'testing 1', 3, '::1', 2, 2),
-	(6, '2013-10-02 11:00:59', 'testing 2', 2, '::1', 1, 1),
-	(7, '2013-10-02 11:01:15', 'testing 3', 1, '::1', 0, 0);
+INSERT INTO `ticket_feedback` (`id`, `feedback_date`, `feedback`, `ticket_id`, `ip_address`, `status`, `type`, `user_id`, `parent_id`) VALUES
+	(3, '2013-10-24 00:21:32', 'gfdsadfgdagffdsaf', 10, '::1', 1, 1, 6, 0),
+	(5, '2013-10-24 00:23:24', 'testing 1', 3, '::1', 1, 1, 5, 0),
+	(6, '2013-10-24 00:21:57', 'testing 2', 10, '::1', 1, 2, 1, 3),
+	(7, '2013-10-23 22:11:11', 'testing 3', 3, '::1', 1, 2, 1, 5),
+	(8, '2013-10-23 17:07:12', 'Test ticket feedback 1023 test1', 10, '::1', 2, 1, 6, 0),
+	(9, '2013-10-23 22:11:30', 'Post ticket feedback test 2 1023 admin', 10, '::1', 2, 2, 1, 6),
+	(10, '2013-10-24 00:18:02', 'Post ticket feedback test 3 1023', 3, '::1', 1, 1, 5, 0),
+	(11, '2013-10-23 23:45:11', 'Post ticket feedbacke test4 1023 admin', 3, '::1', 2, 2, 1, 7),
+	(12, '2013-10-24 00:08:47', ';adjf;asjdf;sajfd;jsadf;lsakjf;saldjf;lajsdf admin 2013', 3, '::1', 2, 2, 1, 11),
+	(13, '2013-10-24 00:09:05', 'fadfasfsafdas admin', 3, '::1', 2, 2, 1, 10),
+	(14, '2013-10-24 00:09:12', '1 admin', 3, '::1', 2, 2, 1, 7),
+	(15, '2013-10-24 00:09:17', '3 admin', 3, '::1', 2, 2, 1, 13),
+	(16, '2013-10-24 00:09:21', '4 admin', 3, '::1', 2, 2, 1, 15),
+	(17, '2013-10-24 00:10:29', '555 admin 16', 3, '::1', 2, 2, 1, 16),
+	(18, '2013-10-24 00:16:38', '66 admin', 3, '::1', 2, 2, 1, 14),
+	(19, '2013-10-24 00:16:57', '77 admin', 3, '::1', 2, 2, 1, 18),
+	(20, '2013-10-24 00:32:23', '888 admin', 10, '::1', 2, 2, 1, 9);
 /*!40000 ALTER TABLE `ticket_feedback` ENABLE KEYS */;
 
 
@@ -181,8 +196,8 @@ CREATE TABLE IF NOT EXISTS `ticket_feedback_type` (
 -- Dumping data for table pmsys_1015.ticket_feedback_type: ~2 rows (approximately)
 /*!40000 ALTER TABLE `ticket_feedback_type` DISABLE KEYS */;
 INSERT INTO `ticket_feedback_type` (`id`, `name`, `slug`) VALUES
-	(1, 'In coming', 'in-coming'),
-	(2, 'Out going', 'out-going');
+	(1, 'Client_Send', 'client send'),
+	(2, 'Admin_Replied', 'admin replied');
 /*!40000 ALTER TABLE `ticket_feedback_type` ENABLE KEYS */;
 
 
