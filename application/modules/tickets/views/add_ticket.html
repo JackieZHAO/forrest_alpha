@@ -1,0 +1,95 @@
+
+
+<form id="add_new_ticket" action="<?=base_url()?>tickets/add_ticket" method="post">
+    <!--class='table table-striped table-hover'-->
+    <div class="content-group">
+        <fieldset>
+            <div>
+                <div class="pull-left"><strong style="font-size: xx-large">+ Post Ticket</strong></div>
+
+                <div class="pull-right">
+                    <button id="cancel_adding_ticket" class="btn btn-danger "><i class="icon-remove icon-white"></i>  Cancel</button>
+                </div>
+
+                <div class="pull-right">
+                    <button id="save_adding_ticket" class="btn btn-primary " ><i class="icon-ok-sign icon-white"></i>  Save</button>
+                </div>
+            </div>
+            <br>
+            <hr>
+
+            <table  class="table table-striped table-hover">
+                <thead>
+                </thead>
+
+                <tbody>
+                    <tr><td>
+                            <label>User id:</label></td>
+                        <td>
+                            <input type = "text" name = "user_id" placeholder = "User id">
+                        </td>
+                        <td>
+                            <label>Ticket Status:</label></td>
+                        <td>
+                            <?php 
+                            echo Modules::run("tickets/ticket_status/show_all_ticket_status");
+                            ?>
+                        </td>
+                        <td>
+                            <label>Ticket date:</label></td>
+                        <td>
+                            <input type = "text" name = "ticket_date" id="adding_ticket_date">
+                        </td></tr>
+                    <tr><td>
+                            <label>IP address:</label></td>
+                        <td>
+                            <input type = "text" name = "ip_address" placeholder = "IP address">
+                        </td>
+                        <td>
+                            <label>Replied:</label></td>
+                        <td>
+                            <input type = "text" name = "replied" placeholder = "Replied">
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Message:</label></td>
+                        <td>
+                            <textarea rows="10" name = "message" placeholder = "Message"></textarea>
+                        </td>
+
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+            <hr>
+        </fieldset>
+    </div>
+</form>
+<script language="javascript" type="text/javascript">
+    $(document).ready(function() {
+    $("#cancel_adding_ticket").click(function() {
+    event.preventDefault();
+    window.history.go(-1);
+
+    //window.history.go(-1);
+    });
+
+    $("#save_adding_ticket").click(function() {
+
+    $("#add_new_ticket").submit();
+    });
+
+    $( "#adding_ticket_date" ).datepicker();
+
+    });
+
+</script>
+

@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="row">
+        <div class="span12">
+            <form id="post_ticket_feedback_form" action="<?=base_url()?>tickets/ticket_feedback/post_ticket_feedback/<?=$ticket_id_pass?>" method="post">
+                <table class="span12 table table-striped table-hover">
+                    <caption><strong>Post Ticket Feedback</strong></caption>
+                    <thead>
+                        <tr>
+                            <th>Please post your ticket feedback here:</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <textarea id="post_feedback_message" class="span10" rows="10" name = "feedback" placeholder = "Ticket Feedback"></textarea>
+                            <td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button id="post_ticket_feedback_submit" class="btn btn-primary pull-right">Submit</button> 
+                                <button id="post_ticket_feedback_reset" type="reset" class="btn btn-warning pull-right">Reset</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script language="javascript" type="text/javascript">
+    $(document).ready(function() {
+        $("#post_ticket_feedback_submit").click(function() {
+            var message = $('#post_feedback_message').val();
+            if (message == "") {
+                alert("You should write something to post.");
+                event.preventDefault();
+            } else {
+                $("#post_ticket_feedback_form").submit();
+            }
+        });
+
+    });
+</script>

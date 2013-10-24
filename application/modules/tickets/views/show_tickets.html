@@ -1,0 +1,142 @@
+<div class="span12">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <table id="show_ticket_table" class="table table-striped table-hover">
+                    <caption>Tickets List</caption>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>	Ticket date		</th>
+                            <th>	Message		        </th>  
+                            <th>	User	                </th>
+                            <th>        Project                 </th>
+                            <th>	Status	                </th>
+                            <th>	Replied		        </th>
+                            <th>	Edit	                </th>
+                            <th>	Delete		        </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($show_result as $result) { ?>
+                        <tr>
+                            <td><?=$result->id?></td>
+                            <td><?=$result->ticket_date?></td>
+                            <td><a href="<?=base_url()?>tickets/ticket_feedback/show_ticket_feedback_by_specific/<?=$result->id?>"><?=$result->message?></a></td>  
+                            <td><?=$result->user_id?></td>
+                            <td><?=$result->project_id?></td>
+                            <td><?=$result->status_type?></td>
+                            <td class="ticket_no_replied_td"><?=$result->replied?></td>
+                            <td>
+                                <?php
+                                echo $edit_button;
+                                ?>
+                            </td>
+                            <td>
+                                <button class="btn btn-danger" onclick="location.href = '<?php echo base_url();?>tickets/delete_ticket/<?php echo $result->id; ?>/<?=$project_id_pass?>';">Delete</button> 
+                            </td>
+                        </tr>
+
+                        <?php } ?> 
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <?php 
+    echo $post_ticket_form;
+   
+    ?>
+
+</div>
+
+<!------------------------------------------------------------------------------------------------------------------------------------->
+<!-- modal register-->
+<div id="update_modal" class="modal hide fade" aria-labelledby="modalLabel" aria-hidden="true">
+    <!--modal register header-->
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <i class="icon-remove"></i>
+        </button>
+        <h3 id="modalLabel">Update</h3>
+    </div>
+    <!--end of modal register header-->
+
+    <!--modal register body-->
+    <div class="modal-body">
+        <form id="update_detail_form" action="<?=base_url()?>tickets/update_ticket/<?=$project_id_pass?>" method="post">
+            <table  id="modal_update_table" class='table table-striped table-hover'>
+                <thead>
+
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>   
+        </form>
+    </div>
+    <!--end of modal register body-->
+
+    <!--modal register footer-->
+    <div class="modal-footer">
+        <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">cancel</button>
+        <button id="ticket_detail_update" class="btn btn-success">update</button>
+    </div>
+    <!--end of modal register footer-->
+</div>
+
+<!--end of modal update-->
+<script language="javascript" type="text/javascript">
+                                    $(document).ready(function() {
+                                        $(".ticket_no_replied_td").each(function() {
+                                            var no_replied = $(this).text();
+                                            var value = $(this).html();
+                                            if (no_replied == 0) {
+                                                //alert(value);
+                                                $(this).replaceWith("<td class='ticket_no_replied_td'><i class='badge badge-important'>" + value + "</i></td>");
+                                            }
+                                        });
+
+                                        $(".btn-info").click(function() {
+                                            var ticket_id = $(this).closest("tr").children().eq(0).text();
+                                            window.location = '<?=base_url()?>tickets/update_ticket/p<?=$project_id_pass?>/t' + ticket_id;
+                                        });
+
+                                        $(".icon-edit").click(function() {
+                                            var ticket_id = $(this).closest("tr").children().eq(0).text();
+                                            view_ticket_detail(ticket_id);
+                                            $("#update_modal").modal({
+                                                show: true,
+                                            });
+                                        });
+                                        $("#ticket_detail_update").click(function() {
+                                            $("#update_detail_form").submit();
+                                        });
+
+                                        function view_ticket_detail(ticket_id) {
+                                            var ajaxOpts = {
+                                                type: "post",
+                                                dataType: "json",
+                                                url: "<?=base_url()?>tickets/ajax_get_ticket",
+                                                data: {ticket_id: ticket_id},
+                                                success: function(data) {
+                                                    $("#modal_update_table tbody").empty().attr("id", ticket_id);
+                                                    for (key in data) {
+                                                        var tr = $("<tr>").appendTo($("#modal_update_table tbody"));
+                                                        $("<td>").text(key).appendTo(tr);
+                                                        if (key == "id") {
+                                                            $("<td>").append($("<input type='text' name='" + key + "' readonly>").val(data[key])).appendTo(tr);
+                                                            continue;
+                                                        }
+
+                                                        $("<td>").append($("<textarea rows='6' name='" + key + "' >").val(data[key])).appendTo(tr);
+
+                                                    }
+                                                }
+                                            };
+                                            $.ajax(ajaxOpts);
+                                        }
+                                    });
+</script>

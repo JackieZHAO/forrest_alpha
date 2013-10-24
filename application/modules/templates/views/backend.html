@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+        <!-- Bootstrap -->
+        <link href="<?=base_url()?>assets/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="<?=base_url()?>assets/css/bootstrap-responsive.css" rel="stylesheet">
+        <link href="<?=base_url()?>assets/css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    </head>
+    <body>
+        <!--main container-->
+        <!--        <div class="container">-->
+
+        <div class="container">
+            <header class="row">
+                <div class="span12">
+                    <?php
+                    echo $main_menu;
+                    ?>
+                  
+                </div>
+            </header>
+        </div>
+        <!--end of header-->
+
+        <!--main content-->
+        <div class="container">
+            <div class="row-fluid">
+                <!--start of side bar-->
+                <!--                <div class="span2">
+                                    <div class="accordion" id="questions">
+                                        users
+                                        <div class="accordion-group">
+                                            <div class="accordion-heading">
+                                                <a class="accordion-toggle btn-inverse" data-toggle="collapse" data-parent="#questions" href="#user-sidebar">Users<i class="icon-white pull-right icon-chevron-down"></i></a>
+                                            </div>
+                                            <div id="user-sidebar" class="accordion-body collapse">
+                                                <div class="accordion-inner">
+                                                    <p><a href="#">Create Users</a></p>
+                                                    <p><a href="<?=base_url()?>users/show_users">View Users</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        end of users
+                
+                                        estates
+                                        <div class="accordion-group">
+                                            <div class="accordion-heading">
+                                                <a class="accordion-toggle btn-inverse" data-toggle="collapse" data-parent="#questions" href="#project-sidebar">Projects<i class="icon-white pull-right icon-chevron-down"></i></a>
+                                            </div>
+                                            <div id="project-sidebar" class="accordion-body collapse">
+                                                <div class="accordion-inner">
+                                                    <p><a href="<?=base_url()?>projects/add_project">Create project</a></p>
+                                                    <p><a href="<?=base_url()?>projects/add_project_status">Create project status</a></p>
+                                                    <p><a href="<?=base_url()?>projects/show_project_specific">View projects</a></p>
+                                                    <p><a href="<?=base_url()?>projects/show_project_status">View project status</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        end of estates
+                
+                                        tickets
+                                        <div class="accordion-group">
+                                            <div class="accordion-heading">
+                                                <a class="accordion-toggle btn-inverse" data-toggle="collapse" data-parent="#questions" href="#ticket-sidebar">Tickets<i class="icon-white pull-right icon-chevron-down"></i></a>
+                                            </div>
+                                            <div id="ticket-sidebar" class="accordion-body collapse">
+                                                <div class="accordion-inner">
+                                                    <p><a href="<?=base_url()?>tickets/add_ticket">Create ticket</a></p>  
+                                                    <p><a href="<?=base_url()?>tickets/show_ticket">View tickets</a></p>
+                                                    <p><a href="#">Create ticket status</a></p>  
+                                                    <p><a href="#">View ticket status</a></p>
+                                                    <p><a href="#">Create feedback</a></p> 
+                                                    <p><a href="<?=base_url()?>tickets/ticket_feedback/show_ticket_feedback">View feedback</a></p>
+                                                    <p><a href="#">Create feedback status</a></p>  
+                                                    <p><a href="#">View feedback status</a></p>
+                                                    <p><a href="#">Create feedback type</a></p>  
+                                                    <p><a href="#">View feedback type</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        end of tickets
+                
+                                        history
+                                        <div class="accordion-group">
+                                            <div class="accordion-heading">
+                                                <a class="accordion-toggle btn-inverse" data-toggle="collapse" data-parent="#questions" href="#history-sidebar">History<i class="icon-white pull-right icon-chevron-down"></i></a>
+                                            </div>
+                                            <div id="history-sidebar" class="accordion-body collapse">
+                                                <div class="accordion-inner">
+                                                    <p><a href="#">View history</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        end of history
+                                    </div>
+                
+                                </div>-->
+                <!--end of left side bar-->
+                <!-- right content-->
+                <div class="span10">
+
+
+                    <?php 
+
+                    $this->load->view($content_path);
+                    ?>
+
+
+                </div>
+                <!--end of right content-->
+            </div>
+        </div>
+
+        <div id="pageBottom">
+            &copy;&nbsp; Emooth &nbsp;&nbsp;&nbsp;&nbsp; Content Management System &nbsp;&nbsp;&nbsp;&nbsp;V &nbsp;1.0.0
+        </div>
+        <!--end of main content-->
+
+        <!--        </div>-->
+        <!--end of main container-->
+
+        <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $("#tip").tooltip();
+            $("#tip_logout").tooltip();
+
+        </script>
+    </body>
+</html>

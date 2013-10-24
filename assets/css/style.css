@@ -1,0 +1,58 @@
+/* 
+    Document   : style
+    Created on : Sep 19, 2013, 2:51:16 PM
+    Author     : jackie
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* =============================================================================
+   Sidebar - Improve to be responsive
+   ========================================================================== */
+#pageBottom{
+/*    background: url(../img/headerSliver.png) repeat-x;
+    height: 90px;
+    margin-bottom: 0px;*/
+    background: black;
+    padding: 40px;
+    font-size: 12px;
+    color:  #CCC;
+    text-align: center;
+    width:100%;
+}
+.sidebar {
+
+    height: 100%;
+    background: #fafafa;
+    float: left;
+}
+
+.sidebar ul {
+    margin: 0;
+    list-style: none;
+}
+
+.sidebar ul li a {
+    padding: 10px 20px;
+    display: block;
+    border-top: 1px solid #f5f5f5;
+    border-bottom: 1px solid #ddd;
+}
+
+.sidebar ul li a:hover {
+    background: #e5e5e5;
+    border-top: 1px solid #e5e5e5;
+}
+/* =============================================================================
+   Sidebar - Improve to be responsive
+   ========================================================================== */
+a {
+    color: #0088cc;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #005580;
+    text-decoration: underline;
+}
+

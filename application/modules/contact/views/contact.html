@@ -1,0 +1,20 @@
+<form id="contact_form" action="<?=base_url()?>contact/process_enquiry" method="post">
+    <p class="label label-info">Please send your enquiry here</p>
+    <div class="controls controls-row">
+        <br>
+        <label>Email : </label>
+        <input type = "text" name = "email" placeholder = "Please input your email">
+        <br>
+        <label>Enquiry : </label>
+        <textarea rows="10" name="message" placeholder="Please input your enquiry here"></textarea>
+        <br>
+        <button id="contact_btn" class="btn btn-primary">Enquiry</button>
+    </div> 
+</form>
+<script language="javascript" type="text/javascript">
+    $(document).ready(function() {
+        $("#contact_btn").click(function() {
+            $("#contact_form").submit();
+        });
+    });
+</script>

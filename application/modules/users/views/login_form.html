@@ -1,0 +1,22 @@
+<div class="well">
+    <form action="<?=base_url()?>users/login" method="post">
+        <fieldset>
+            <legend>Login</legend>
+            <input name="email" type="text" class="input-block-level" placeholder="email">
+            <input name="password" type="password" class="input-block-level" placeholder="password">
+            
+            <a class="btn btn-info" href = "<?=base_url()?>users/forget_password" role = "button" data-toggle="modal">Forget Password</a>
+            <a class="btn btn-info" href = "<?=base_url()?>users/forget_email" role = "button" data-toggle="modal">Forget Email</a>
+            <a class="btn btn-info" href="#register" role="button" data-toggle="modal">Register</a>
+
+
+            <div class="pull-right">
+                <input type="submit" class="btn btn-primary" value="Login">
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+<?php 
+$this->load->view('registration_form.html');
+?>

@@ -1,0 +1,10 @@
+<select name="type" id="type">
+    <option value="none">
+        Please select the type
+    </option>
+    <?php foreach($show_result as $result){ ?>
+    <option value="<?php echo $result->id; ?>">
+        <?php echo $result->name; ?>
+    </option>
+    <?php } ?>
+</select>

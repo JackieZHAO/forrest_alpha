@@ -1,0 +1,132 @@
+<div class="span12">
+     
+  <?php echo $nav_user_admin;?>  
+    <table class="table table-striped table-hover">
+        <caption>Users List</caption>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>	First Name	        </th>
+                <th>	Last Name		</th>  
+                <th>	Contact Number		</th>
+                <th>	State	                </th>
+                <th>	Status		        </th>
+                <th>	User Type		</th>
+                <th>	Edit	                </th>
+                <th>	Delete		        </th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($show_result as $result) {?>
+            <tr>
+                <td><?=$result->id?></td>
+                <td><?=$result->first_name?></td>
+                <td><?=$result->last_name?></td>  
+                <td><?=$result->contact_number?></td>
+                <td><?=$result->state?></td>
+                <td><?=$result->status_type?></td>
+                <td><?=$result->type_type?></td>
+                <td>
+
+                    <a id="update_button" class="btn btn-info" role="button" data-toggle="modal">Update</a>
+                </td>
+                <td>
+                    <button class="btn btn-danger" onclick="location.href = '<?php echo base_url();?>projects/delete_project/<?php echo $result->id; ?>';">Delete</button> 
+                </td>
+            </tr>
+
+            <?php } ?> 
+        </tbody>
+    </table>
+</div>
+
+<!------------------------------------------------------------------------------------------------------------------------------------->
+<!-- modal register-->
+<div id="update_modal" class="modal hide fade" aria-labelledby="modalLabel" aria-hidden="true">
+    <!--modal register header-->
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <i class="icon-remove"></i>
+        </button>
+        <h3 id="modalLabel">Update</h3>
+    </div>
+    <!--end of modal register header-->
+
+    <!--modal register body-->
+    <div class="modal-body">
+        <form id="update_detail_form" action="<?=base_url()?>projects/update_project" method="post">
+            <table  id="modal_update_table" class='table table-striped table-hover'>
+                <thead>
+                    <tr><td>
+                            <label>Project Status :</label></td>
+                        <td>
+
+                            <?php 
+  
+                            echo Modules::run("projects/project_status/show_all_project_status"); 
+
+                            ?>
+                        </td></tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>   
+        </form>
+    </div>
+    <!--end of modal register body-->
+
+    <!--modal register footer-->
+    <div class="modal-footer">
+        <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">cancel</button>
+        <button id="project_detail_update" class="btn btn-success">update</button>
+    </div>
+    <!--end of modal register footer-->
+</div>
+
+<!--end of modal update-->
+<script language="javascript" type="text/javascript">
+
+                        $(".btn-info").click(function() {
+                            var project_id = $(this).closest("tr").children().eq(0).text();
+                            view_project_detail(project_id);
+
+                            $("#update_modal").modal({
+                                show: true,
+                             });
+                        });
+
+                        $("#project_detail_update").click(function() {
+                            $("#update_detail_form").submit();
+                        });
+
+                        function view_project_detail(project_id) {
+                            var ajaxOpts = {
+                                type: "post",
+                                dataType: "json",
+                                url: "<?=base_url()?>projects/ajax_get_project",
+                                data: {project_id: project_id},
+                                success: function(data) {
+                                    $("#modal_update_table tbody").empty().attr("id", project_id);
+                                    for (key in data) {
+                                        if (key == "status_id") {
+                                            $("#status_id").val(data[key]);
+                                            continue;
+                                        }
+                                        var tr = $("<tr>").appendTo($("#modal_update_table tbody"));
+                                        $("<td>").text(key).appendTo(tr);
+                                        if (key == "id" || key == "start_date" || key == "end_date") {
+                                            $("<td>").append($("<input type='text' name='" + key + "' readonly>").val(data[key])).appendTo(tr);
+                                            continue;
+                                        }
+                                        if (key == "description") {
+                                            $("<td>").append($("<textarea rows='6' name='" + key + "' >").val(data[key])).appendTo(tr);
+                                            continue;
+                                        }
+                                        $("<td>").append($("<input type='text' name='" + key + "' >").val(data[key])).appendTo(tr);                                       
+                                    }                      
+                                }
+                            };
+                            $.ajax(ajaxOpts);
+                        }
+</script>

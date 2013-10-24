@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+        <!-- Bootstrap -->
+        <link href="<?=base_url()?>assets/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="<?=base_url()?>assets/css/bootstrap-responsive.css" rel="stylesheet">
+        <link href="<?=base_url()?>assets/css/style.css" rel="stylesheet">
+        <link href="<?=base_url()?>assets/css/cmxform.css" rel="stylesheet" type="text/css">
+        <script src="http://code.jquery.com/jquery.js"></script>
+        <script src="<?=base_url()?>assets/js/jquery.validate.js"></script>
+         <script>
+//            $.validator.setDefaults({
+//                submitHandler: function() {
+//                    alert("submitted!");
+//                    $("#registration_form").submit();
+//                }
+//            });
+
+            $().ready(function() {
+                $("#registration_form").validate({
+                    rules: {
+                        /*first_name: "required",
+                         last_name: "required",*/
+                        password: {
+                            required: true,
+                            minlength: 5
+                        },
+                        /*post_code:{ 
+                         required: true,
+                         maxlen: 4
+                         },*/
+                        post_code: {
+                            required: true,
+                            digits: true
+                        },
+                        contact_number: {
+                            required: true,
+                            digits: true
+                        },
+                        /*confirm_password: {
+                         required: true,
+                         minlength: 5,
+                         equalTo: "#password"
+                         },
+                         */
+                        confirm_email: {
+                            required: true,
+                            email: true,
+                            equalTo: "#email"
+                        }
+                    },
+                    messages: {
+                        first_name: {
+                            /*required: "Please enter your firstname",*/
+                            minlength: "Your first name must be at least 2 characters long"
+                        },
+                        last_name: {
+                            /*required: "Please enter your lastname",*/
+                            minlength: "Your last name must be at least 2 characters long"
+                        },
+                        /*post_code:{
+                         required: "Please enter your postcode"
+                         },*/
+                        password: {
+                            required: "Please provide a password",
+                            minlength: "Your password must be at least 5 characters long"
+                        },
+                        /*confirm_password: {
+                         required: "Please provide a password",
+                         minlength: "Your password must be at least 5 characters long",
+                         equalTo: "Please enter the same password as above"
+                         },
+                         */
+                        email: {
+                            required: "Please enter a valid email address",
+                            equalTo: "Please enter the same email address as above"
+                        }
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+            <?php $this->load->view($content_path); ?>
+                </div>
+            </div>
+        </div>
+
+        <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
+    </body>
+</html>

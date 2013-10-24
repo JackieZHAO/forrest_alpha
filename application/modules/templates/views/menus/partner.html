@@ -1,0 +1,91 @@
+<nav class="navbar navbar-inverse">
+    <div class="navbar-inner">
+        <a href="#" class="brand">C M S</a>
+        <!--responsive button-->
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-thumbs-down"></span>
+        </a>
+        <!--end of responsive button-->
+        <!--nav content-->
+        <div class="nav-collapse collapse">
+            <ul class="nav">
+                <li class="divider-vertical"></li>
+                <li><a href="<?=base_url()?>dashboard">Dashboard</a></li>
+                <li class="divider-vertical"></li>
+
+                <!--users drop down-->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Users
+                        <b class="caret"></b>
+                    </a>  
+                    <ul class="dropdown-menu">
+                        <li><a href="<?=base_url()?>users/show_users">View user</a></li>
+                    </ul>
+                </li>
+                <!--end of users drop down-->
+
+                <!--project drop down-->
+                <!--                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Projects
+                                        <b class="caret"></b>
+                                    </a>  
+                                    <ul class="dropdown-menu">
+                                        <li><a href="<?=base_url()?>projects/add_project">Create project</a></li> 
+                                        <li class="divider"></li>
+                                        <li><a href="<?=base_url()?>projects/show_project_specific">View projects</a></li>
+                                    </ul>
+                                </li>-->
+                <!--end of project drop down-->
+                <!--                <li class="divider-vertical"></li>-->
+
+                <!--tickets drop down-->
+                <!--                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tickets
+                                        <b class="caret"></b>
+                                    </a>  
+                                    <ul class="dropdown-menu">
+                                        <li><a href="<?=base_url()?>tickets/show_tickets">View tickets</a></li>                    
+                                    </ul>
+                                </li>-->
+                <!--end of drop down tickets-->
+
+                <li class="divider-vertical"></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Connect
+                        <b class="caret"></b>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Google+</a></li>
+                        <li class="divider"></li>
+                        <li><a href="<?=base_url()?>contact">Contact us</a></li>
+                    </ul>
+                </li>
+                <li class="divider-vertical"></li>
+                <li ><a class="label label-success large" style="font-size: x-large">Project Value : $<?=$total_sum?></a></li>
+                <li class="divider-vertical"></li>
+                <li><a href="#" style="font-size: 16px;">Hello&nbsp;:&nbsp;&nbsp;<?=$user_name?></a></li>
+                <li><a id="user_slug" href = "">(<?=$user_slug?>)</a></li>
+                <li class="divider-vertical"></li>
+            </ul>
+        </div>
+        <!--end of nav content-->
+
+        <div class="brand pull-right">
+            <a href="<?=base_url()?>users/logout" id="tip_logout" rel="tooltip" data-animation="true" data-original-title="Log out" data-placement="bottom"><img src="<?=base_url()?>assets/img/icons/logout.png"></a>  
+        </div>
+
+
+        <!--nav search-->
+        <form class="navbar-search pull-right" action="">
+            
+            <input type="text" class="search-query span2" placeholder="Search">
+            <button class="btn btn-success btn-mini">Search</button>
+        </form>
+        <!--end of nav search-->
+
+
+    </div>
+</nav>

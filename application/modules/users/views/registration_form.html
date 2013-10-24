@@ -1,0 +1,141 @@
+<!-- modal register-->
+<div id="register" class="modal hide fade" aria-labelledby="modalLabel" aria-hidden="true">
+
+    <!--modal register header-->
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <i class="icon-remove"></i>
+        </button>
+<!--        <h1 align=center><img src="<?=base_url()?>assets/img/logo-300x100.png"  alt="logo"/></h1>-->
+        <h1 id="modalLabel">Registration</h1>
+    </div>
+    <!--end of modal register header-->
+
+    <!--modal register body-->
+    <div class="modal-body">
+<h1 align=center><img src="<?=base_url()?>assets/img/logo-300x100.png"  alt="logo"/></h1>
+            <!--        <h1>Registration</h1>-->
+            <p style="color:red;">(*mandatory field)</p>
+        
+        <form id="registration_form" action="<?=base_url()?>users/user_temp/register" method="post">
+            <p class="label label-info">required</p>
+            <div class="controls controls-row">
+                <div class="form-group">
+                    <label for="company_name" class="col-lg-2 control-label">Password<span style="color:red;">*</span></label>
+                    <div class="col-lg-10">
+                        <input type="text" name = "password" id="company_name" class="form-control" placeholder="Password" required>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" for = "first_name">First Name</label>
+                    <div class="col-lg-10">
+                        <input type="text" name = "first_name" id = "first_name" minlength = "2" class="form-control"  placeholder="First Name" >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" for = "last_name">Last Name</label>
+                    <div class="col-lg-10">
+                        <input type="text" name = "last_name" id = "last_name" minlength = "2" class="form-control" placeholder="Last Name" >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" for = "contact_number">Contact Number<span style="color:red;">*</span></label>
+                    <div class="col-lg-10">
+                        <input type="text" name = "contact_number" id = "contact_number" class="form-control" placeholder="Contact Number" required >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="col-lg-2 control-label">Email<span style="color:red;">*</span></label>
+                    <div class="col-lg-10">
+                        <input type="email" name = "email" id="email" class="form-control"  placeholder="Email" required >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm_email" class="col-lg-2 control-label">Confirm Email<span style="color:red;">*</span></label>
+                    <div class="col-lg-10">
+                        <input type="email" name = "confirm_email" id="confirm_email" class="form-control"  placeholder="Verify Email" required >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="ABN" class="col-lg-2 control-label">ABN</label>
+                    <div class="col-lg-10">
+                        <input type="text" name = "ABN" id="ABN" class="form-control" placeholder="ABN">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="street_name" class="col-lg-2 control-label">Street Name</label>
+                    <div class="col-lg-10">
+                        <input type="text" name = "street_name" id="street_name" class="form-control" placeholder="Street Name">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="suburb" class="col-lg-2 control-label">Suburb</label>
+                    <div class="col-lg-10">
+                        <input type="text"  name = "suburb" id="suburb" class="form-control" placeholder="Suburb">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="state" class="col-lg-2 control-label">State</label>
+                    <div class="col-lg-10">
+                        <input type="text" name = "state" id="state" class="form-control" placeholder="State">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="post_code" class="col-lg-2 control-label">Postcode<span style="color:red;">*</span></label>
+                    <div class="col-lg-10">
+                        <input type="text" name = "post_code" id="post_code" class="form-control" placeholder="Postcode" maxlen="4" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="find_us" class="col-lg-2 control-label">How you find us:</label>
+                    <div class="col-lg-10">
+                        <select name = "find_us" id="postcode" class="form-control">
+                            <option>Newspager</option>
+                            <option>Outdoor Sign</option>
+                            <option>Flyer</option>
+                            <option>Partnershops</option>
+                        </select>
+                    </div>
+                </div>
+
+<!--                <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10">
+
+                        <button type="submit" class="btn btn-default">Register</button>
+
+                    </div>
+                </div>-->
+
+            </div> 
+        </form>
+    </div>
+    <!--end of modal register body-->
+
+    <!--modal register footer-->
+    <div class="modal-footer">
+        <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">cancel</button>
+        <button id="registration_btn" class="btn btn-success">register</button>
+    </div>
+    <!--end of modal register footer-->
+</div>
+<!--end of modal register-->
+<script language="javascript" type="text/javascript">
+    $(document).ready(function() {
+        $("#registration_btn").click(function() {
+            $("#registration_form").submit();
+//                            window.history.go(-1);
+        });
+    });
+</script>

@@ -1,0 +1,10 @@
+<select name="status" id="status">
+    <option value="none">
+        Please select the status
+    </option>
+    <?php foreach($show_result as $result){ ?>
+    <option value="<?php echo $result->id; ?>">
+        <?php echo $result->name; ?>
+    </option>
+    <?php } ?>
+</select>

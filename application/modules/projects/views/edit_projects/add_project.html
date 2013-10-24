@@ -1,0 +1,113 @@
+<form id="add_new_project" action="<?=base_url()?>projects/add_project" method="post">
+    <!--class='table table-striped table-hover'-->
+    <div class="content-group">
+        <fieldset>
+            <div>
+                <div class="pull-left"><strong style="font-size: xx-large">+ Add Form</strong></div>
+
+                <div class="pull-right">
+                    <button id="cancel_add_project" class="btn btn-danger "><i class="icon-remove icon-white"></i>  Cancel</button>
+                </div>
+
+                <div class="pull-right">
+                    <button id="save_add_project" class="btn btn-primary "><i class="icon-ok-sign icon-white"></i>  Save</button>
+                </div>
+            </div>
+            <br>
+            <hr>
+
+            <table  class="table table-striped table-hover">
+                <thead>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>
+                            <label>Name:</label></td>
+                        <td>
+                            <input type = "text" name = "name" placeholder = "Name">
+                        </td> 
+                        <td>
+                            <label>Project Status:</label></td>
+                        <td>
+                            <?php 
+                            echo $project_status_dropdown;
+                            ?>
+                        </td>
+                    </tr>
+                    <tr>  
+                        <td>
+                            <label>User Id :</label>
+                        </td>
+                        <td>
+                            <input type = "text" name = "user_id" placeholder = "User Id">
+                        </td>
+                        <td>
+                            <label>Start date:</label>
+                        </td>
+                        <td>
+                            <input type = "text" name = "start_date" id="project_add_start_date">
+                        </td> 
+                    </tr>
+                    <tr>            
+                        <td>
+                            <label>End date :</label>
+                        </td>
+                        <td>
+                            <input type = "text" name = "end_date" id="project_add_end_date">
+                        </td>
+                        <td>
+                            <label>Percentage complete :</label>
+                        </td>
+                        <td>
+                            <input type = "text" name = "percentage_complete" placeholder = "Percentage complete">
+                        </td>
+                    </tr>
+                    <tr>      
+                        <td>
+                            <label>Project Value :</label>
+                        </td>
+                        <td>
+                            <input type = "text" name = "value" placeholder = "Project Value">
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Description :</label></td>
+                        <td>
+                            <textarea id="project_description" rows="10" name = "description" placeholder = "Description"></textarea>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+        </fieldset>
+    </div>
+</form>
+
+<script language="javascript" type="text/javascript">
+    $(document).ready(function() {
+
+        $("#cancel_add_project").click(function() {
+            event.preventDefault();
+            window.history.go(-1);
+        });
+
+        $("#save_add_project").click(function() {
+
+            $("#add_new_project").submit();
+        });
+
+        $("#project_add_start_date").datepicker();
+
+        $("#project_add_end_date").datepicker();
+
+    });
+
+</script>
+
+
